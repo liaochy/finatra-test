@@ -4,7 +4,7 @@
 		module="finatra-test-build-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20160113171618"
+		publication="20160427102428"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>

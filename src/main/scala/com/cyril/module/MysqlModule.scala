@@ -4,6 +4,8 @@ import com.google.inject.Provides
 import com.twitter.finagle.client.DefaultPool
 import com.twitter.finagle.exp.Mysql
 import com.twitter.finagle.exp.mysql.Client
+import com.twitter.finagle.param
+import com.twitter.finagle.tracing.DefaultTracer
 import com.twitter.inject.TwitterModule
 import javax.inject.{Inject, Singleton}
 import com.twitter.conversions.time._
@@ -19,6 +21,8 @@ object MysqlModule extends TwitterModule{
     Mysql.client
       .withCredentials("platform", "xk0LGa_Iy224Drl")
       .withDatabase("platform")
+      .configured(param.Label("mysqlClient"))
+      .configured(param.Tracer(DefaultTracer.self ))
       .configured(DefaultPool.Param(
         low = 0, high = 10,
         idleTime = 5.minutes,
